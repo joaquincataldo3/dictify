@@ -6,23 +6,23 @@ const AppContext = createContext()
 
 const letters = ['Serif', 'Sans Serif']
 
-const modes = {
-    light: 'light',
-    dark: 'dark'
-}
+const modes = ['light', 'dark']
 
 const initialState = {
     modes: modes,
-    modeActive: modes.light,
+    modeActive: modes[0],
     activeLetter: letters[0],
     letters: letters,
-    word: 'hello',
+    firstWord: 'hello',
+    word: '',
     data: []
 }
 
 const actions = {
     FETCH_WORD: 'FETCH_WORD',
-    CHANGE_ACTIVE_LETTER: 'CHANGE_ACTIVE_LETTER'
+    CHANGE_ACTIVE_LETTER: 'CHANGE_ACTIVE_LETTER',
+    CHANGE_ACTIVE_MODE: 'CHANGE_ACTIVE_MODE',
+    CHANGE_WORD_VALUE: 'CHANGE_WORD_VALUE'
 }
 
 const apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en'
@@ -32,7 +32,7 @@ const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)  
 
     useEffect(() => {
-        fetchApi(initialState.word)
+        fetchApi(initialState.firstWord)
     }, [])
 
     const fetchApi = async (word) => {
@@ -42,13 +42,27 @@ const AppProvider = ({children}) => {
         dispatch({type: actions.FETCH_WORD, payload: data})
     }
 
-    const changeActiveLetter = (id) => {
+    const changeActiveLetter = (id, letterList) => {
+        const list = letterList.current
+        list.classList.toggle('list-active')
         dispatch({type: actions.CHANGE_ACTIVE_LETTER, payload: id})
+    }
+
+    const changeActiveMode = (modeActive) => {
+        const body =  document.body
+       body.classList.toggle('body-dark')
+        dispatch({type: actions.CHANGE_ACTIVE_MODE, payload: modeActive})
+    }
+
+    const changeWordValue = (target) => {
+        dispatch({type: actions.CHANGE_WORD_VALUE, payload: target})
     }
     
     const providerValue = {
         ...state,
-        changeActiveLetter
+        changeActiveLetter,
+        changeActiveMode,
+        changeWordValue
     }
 
     return (
@@ -62,4 +76,4 @@ const useGlobalContext = () => {
     return useContext(AppContext)
 }
 
-export {AppProvider, useGlobalContext}
+export {AppProvider, useGlobalContext, actions}

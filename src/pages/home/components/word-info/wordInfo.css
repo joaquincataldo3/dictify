@@ -1,0 +1,21 @@
+.word-info-container {
+    width: 75%;
+    margin: 2rem auto;
+}
+
+.info-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-title h2 {
+    width: 40%;
+}
+
+.line {
+    width: 60%;
+    background-color: rgb(201, 201, 201);
+    height: 1px;
+    margin-left: 0.500rem;
+}

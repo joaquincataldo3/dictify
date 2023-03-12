@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+.body-dark {
+    background-color: #03001C;
+    transition: background-color 150ms ease-in-out;
+}
+
 
 .header {
     padding: 2rem 1rem;
@@ -12,7 +17,6 @@
 .header-content-container {
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
     padding: 1rem;
 }
 
@@ -99,7 +103,7 @@
 }
 
 .active {
-    background-color: rgb(119, 0, 255);
+    background-color: #AA77FF;
 }
 
 .right {
@@ -108,4 +112,9 @@
 
 .bx-moon {
     margin-left: 10px;
+    transition: color 150ms;
+}
+
+.moon-dark {
+    color: #AA77FF;
 }

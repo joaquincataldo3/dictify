@@ -4,7 +4,7 @@ import './word.css'
 
 function Word() {
 
-  const { data } = useGlobalContext()
+  const { data, modeActive } = useGlobalContext()
 
   const playSound = (src) => {
     const sound = new Howl({src})
@@ -22,7 +22,7 @@ function Word() {
 
             {data.map((data, i) => {
               const { word } = data
-              return <h2 key={i} className="word">{word}</h2>
+              return <h2 key={i} className={`word ${modeActive === 'dark' && 'word-dark'}`}>{word}</h2>
             })}
 
             {data.map((data, i) => {

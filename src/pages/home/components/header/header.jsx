@@ -8,7 +8,7 @@ import './header.css'
 
 function Header() {
 
-  const { modes, modeActive, letters, activeLetter, changeActiveLetter } = useGlobalContext()
+  const { modes, modeActive, letters, activeLetter, changeActiveLetter, changeActiveMode } = useGlobalContext()
 
   const toggleMode = useRef(null)
   const toggleModeContainer = useRef(null)
@@ -19,6 +19,7 @@ function Header() {
     const btnContainer = toggleModeContainer.current
     btn.classList.toggle('right')
     btnContainer.classList.toggle('active')
+    changeActiveMode(modeActive)
   }
 
   const handleToggleLetterListMenu = () => {
@@ -31,12 +32,12 @@ function Header() {
     <header className='header'>
       <div className='header-content-container'>
         <div className='logo-container'>
-          <img src={modeActive === modes.light ? blackLogo : whiteLogo} alt='jc_logo' />
+          <img src={modeActive === 'light' ? blackLogo : whiteLogo} alt='jc_logo' />
         </div>
         <div className='header-second-column'>
           <div className='letter-type-container'>
             <div className='active-letter-container' onClick={handleToggleLetterListMenu}>
-              <p>{activeLetter}</p>
+              <p className={`${modeActive === 'dark' && 'word-dark'}`}>{activeLetter}</p>
               <i className='bx bx-chevron-down'></i>
             </div>
             <div className='letter-list-container' ref={letterList}>
@@ -45,7 +46,7 @@ function Header() {
                   letters.map((letter, i) => {
                     if (letter !== activeLetter) {
                       const letterId = letter
-                      return <p onClick={() => changeActiveLetter(letterId)} id={letterId} key={i}>{letter}</p>
+                      return <p onClick={() => changeActiveLetter(letterId, letterList)} id={letterId} key={i}>{letter}</p>
                     }
 
                   })
@@ -58,7 +59,7 @@ function Header() {
             <div className='mode-btn' ref={toggleModeContainer}>
               <div className='mode-toggle' onClick={handleToggleMode} ref={toggleMode}></div>
             </div>
-              <i className='bx bx-moon'></i>
+              <i className={`bx bx-moon ${modeActive === 'dark' && 'moon-dark'}`}></i>
           </div>
         </div>
       </div>
