@@ -22,11 +22,15 @@
 }
 
 .example {
-    font-weight: 700;
+   
     margin-bottom: 1rem;
+    color: rgb(166, 166, 166);
+}
+
+.definition-list {
+    margin-left: 2.5rem;
 }
 
 .definition {
-    
-    margin: 0.300rem 0;
+    margin: 0.500rem 0;
 }

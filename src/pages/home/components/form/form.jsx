@@ -17,6 +17,7 @@ function Form() {
             if(box.classList.contains('input-error')){
                 box.classList.remove('input-error')
             }
+          
             fetchApi(word)
         }
     }

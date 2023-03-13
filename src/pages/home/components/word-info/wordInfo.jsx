@@ -28,7 +28,7 @@ function wordInfo() {
                                         </div>
                                         <div className="info-description">
                                             <p className="example">Example</p>
-                                            <ul type='disc'>
+                                            <ul type='disc' className="definition-list">
                                                 {
                                                     meaning.definitions.map((item, i) => {
                                                         const { definition } = item
