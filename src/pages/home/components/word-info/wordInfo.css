@@ -1,6 +1,7 @@
 .word-info-container {
     width: 75%;
     margin: 2rem auto;
+    max-width: 830px;
 }
 
 .info-title {

@@ -2,6 +2,8 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 550ms;
+    margin: 0 auto;
+    max-width: 830px;
 }
 
 .word-wrapper-active {
