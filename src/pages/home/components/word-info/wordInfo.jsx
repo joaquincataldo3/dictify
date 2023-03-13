@@ -4,7 +4,7 @@ import './wordInfo.css'
 
 function wordInfo() {
 
-    const { data, loading } = useGlobalContext()
+    const { data, loading, modeActive } = useGlobalContext()
 
     return (
         <>
@@ -23,17 +23,17 @@ function wordInfo() {
                                 <div className="word-info-container" key={i}>
                                     <div className="info-box">
                                         <div className="info-title">
-                                            <h3>{partOfSpeech}</h3>
+                                            <h3 className={`${modeActive === 'dark' && 'word-dark'}`}>{partOfSpeech}</h3>
                                             <div className="line"></div>
                                         </div>
                                         <div className="info-description">
-                                            <p>Example</p>
-                                            <ul  type='none'>
+                                            <p className="example">Example</p>
+                                            <ul type='disc'>
                                                 {
                                                     meaning.definitions.map((item, i) => {
                                                         const { definition } = item
                                                         return (
-                                                            <li key={i}>{definition}</li>
+                                                            <li key={i} className={`definition ${modeActive === 'dark' && 'word-dark'}`}>{definition}</li>
                                                         )
                                                     })}
                                             </ul>

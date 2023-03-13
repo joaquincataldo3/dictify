@@ -20,3 +20,13 @@
     height: 1px;
     margin-left: 0.500rem;
 }
+
+.example {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.definition {
+    
+    margin: 0.300rem 0;
+}

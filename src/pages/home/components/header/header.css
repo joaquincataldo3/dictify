@@ -5,7 +5,7 @@
 }
 
 .body-dark {
-    background-color: #03001C;
+    background-color: #020012;
     transition: background-color 150ms ease-in-out;
 }
 
@@ -46,7 +46,7 @@
 .active-letter-container {
     display: flex;
     align-items: center;
-
+    cursor: pointer;
     justify-content: center;
 }
 
@@ -91,6 +91,7 @@
     flex-direction: column;
     justify-content: center;
     transition: background-color 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .mode-toggle {
@@ -100,6 +101,7 @@
     border: 1px solid rgb(166, 166, 166);
     background-color: white;
     transition: transform 100ms ease-in-out;
+    
 }
 
 .active {

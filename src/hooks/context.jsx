@@ -66,7 +66,8 @@ const AppProvider = ({children}) => {
         changeActiveLetter,
         changeActiveMode,
         changeWordValue,
-        loading
+        loading,
+        fetchApi
     }
 
     return (

@@ -4,7 +4,7 @@ import './form.css'
 
 function Form() {
 
-    const { word, changeWordValue, fetchApi } = useGlobalContext()
+    const { word, changeWordValue, fetchApi, modeActive } = useGlobalContext()
     const searchBox = useRef(null)
 
     const handleFormSubmit = (e) => {
@@ -24,9 +24,9 @@ function Form() {
     return (
 
         <form onSubmit={handleFormSubmit} >
-            <div className="input-magnifying-container" ref={searchBox}>
+            <div className={`input-magnifying-container ${modeActive === 'dark' && 'input-dark-mode'}`} ref={searchBox}>
                 <input type="text" value={word}  onChange={(e) =>
-                    changeWordValue(e.target.value)} /><i className='bx bx-search-alt-2'></i>
+                    changeWordValue(e.target.value)} /><i className='bx bx-search-alt-2' onClick={handleFormSubmit}></i>
             </div>
 
         </form>

@@ -56,8 +56,8 @@ function Header() {
             </div>
           </div>
           <div className='mode-container' >
-            <div className='mode-btn' ref={toggleModeContainer}>
-              <div className='mode-toggle' onClick={handleToggleMode} ref={toggleMode}></div>
+            <div className='mode-btn' ref={toggleModeContainer} onClick={handleToggleMode}>
+              <div className='mode-toggle'  ref={toggleMode}></div>
             </div>
               <i className={`bx bx-moon ${modeActive === 'dark' && 'moon-dark'}`}></i>
           </div>
