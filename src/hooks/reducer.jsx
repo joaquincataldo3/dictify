@@ -4,7 +4,7 @@ const reducer = (state, action) => {
 
     switch(action.type) {
 
-        case actions.FETCH_WORD:
+        case actions.FETCH_WORD_SUCCESS:
             return {...state, data: action.payload}
       
         case actions.CHANGE_ACTIVE_LETTER:

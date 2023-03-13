@@ -1,12 +1,18 @@
 import { useGlobalContext } from "../../../../hooks/context"
+import LoadingSpinner from "../loading-spinner/loadingSpinner"
 import './wordInfo.css'
 
 function wordInfo() {
 
-    const { data } = useGlobalContext()
+    const { data, loading } = useGlobalContext()
 
     return (
         <>
+
+            {
+                loading && <LoadingSpinner />
+            }
+
             {
                 data.length > 0 &&
                 data.map(data => {
@@ -22,7 +28,7 @@ function wordInfo() {
                                         </div>
                                         <div className="info-description">
                                             <p>Example</p>
-                                            <ul>
+                                            <ul  type='none'>
                                                 {
                                                     meaning.definitions.map((item, i) => {
                                                         const { definition } = item

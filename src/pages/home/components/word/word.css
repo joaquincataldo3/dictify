@@ -24,4 +24,5 @@
 .bx-play-circle {
     color: #AA77FF;
     font-size: 3rem;
+    cursor: pointer;
 }

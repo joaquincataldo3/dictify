@@ -1,10 +1,11 @@
 import { useGlobalContext } from "../../../../hooks/context"
 import {Howl, Howler} from 'howler'
+import LoadingSpinner from "../loading-spinner/loadingSpinner"
 import './word.css'
 
 function Word() {
 
-  const { data, modeActive } = useGlobalContext()
+  const { data, modeActive, loading } = useGlobalContext()
 
   const playSound = (src) => {
     const sound = new Howl({src})
@@ -15,6 +16,11 @@ function Word() {
 
   return (
     <>
+
+      {
+        loading && <LoadingSpinner />
+      }
+
       {
         data.length > 0 &&
         <div className="word-content-container">

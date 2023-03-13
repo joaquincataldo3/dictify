@@ -19,7 +19,7 @@ const initialState = {
 }
 
 const actions = {
-    FETCH_WORD: 'FETCH_WORD',
+    FETCH_WORD_SUCCESS: 'FETCH_WORD',
     CHANGE_ACTIVE_LETTER: 'CHANGE_ACTIVE_LETTER',
     CHANGE_ACTIVE_MODE: 'CHANGE_ACTIVE_MODE',
     CHANGE_WORD_VALUE: 'CHANGE_WORD_VALUE'
@@ -30,16 +30,19 @@ const apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en'
 const AppProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)  
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         fetchApi(initialState.firstWord)
     }, [])
 
     const fetchApi = async (word) => {
+        setLoading(true)
         const response = await axios(`${apiUrl}/${word}`)
         const data = response.data
          console.log(data)
-        dispatch({type: actions.FETCH_WORD, payload: data})
+        dispatch({type: actions.FETCH_WORD_SUCCESS, payload: data})
+        setLoading(false)
     }
 
     const changeActiveLetter = (id, letterList) => {
@@ -62,7 +65,8 @@ const AppProvider = ({children}) => {
         ...state,
         changeActiveLetter,
         changeActiveMode,
-        changeWordValue
+        changeWordValue,
+        loading
     }
 
     return (
