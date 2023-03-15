@@ -15,21 +15,24 @@ const initialState = {
     letters: letters,
     firstWord: 'hello',
     word: '',
-    data: []
+    data: [],
+    fetchError: false,
+    wordError: ''
 }
 
 const actions = {
-    FETCH_WORD_SUCCESS: 'FETCH_WORD',
+    FETCH_WORD_SUCCESS: 'FETCH_WORD_SUCCESS',
     CHANGE_ACTIVE_LETTER: 'CHANGE_ACTIVE_LETTER',
     CHANGE_ACTIVE_MODE: 'CHANGE_ACTIVE_MODE',
-    CHANGE_WORD_VALUE: 'CHANGE_WORD_VALUE'
+    CHANGE_WORD_VALUE: 'CHANGE_WORD_VALUE',
+    FETCH_WORD_ERROR: 'FETCH_WORD_ERROR'
 }
 
 const apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en'
 
-const AppProvider = ({children}) => {
+const AppProvider = ({ children }) => {
 
-    const [state, dispatch] = useReducer(reducer, initialState)  
+    const [state, dispatch] = useReducer(reducer, initialState)
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -38,29 +41,33 @@ const AppProvider = ({children}) => {
 
     const fetchApi = async (word) => {
         setLoading(true)
-        const response = await axios(`${apiUrl}/${word}`)
-        const data = response.data
-         console.log(data)
-        dispatch({type: actions.FETCH_WORD_SUCCESS, payload: data})
-        setLoading(false)
+        try {
+            const response = await axios(`${apiUrl}/${word}`)
+            const data = response.data
+            dispatch({ type: actions.FETCH_WORD_SUCCESS, payload: data })
+            setLoading(false)
+        } catch (error) {
+            console.log(error)
+            return dispatch({ type: actions.FETCH_WORD_ERROR, payload: word })
+        }
     }
 
     const changeActiveLetter = (id, letterList) => {
         const list = letterList.current
         list.classList.toggle('list-active')
-        dispatch({type: actions.CHANGE_ACTIVE_LETTER, payload: id})
+        dispatch({ type: actions.CHANGE_ACTIVE_LETTER, payload: id })
     }
 
     const changeActiveMode = (modeActive) => {
-        const body =  document.body
-       body.classList.toggle('body-dark')
-        dispatch({type: actions.CHANGE_ACTIVE_MODE, payload: modeActive})
+        const body = document.body
+        body.classList.toggle('body-dark')
+        dispatch({ type: actions.CHANGE_ACTIVE_MODE, payload: modeActive })
     }
 
     const changeWordValue = (target) => {
-        dispatch({type: actions.CHANGE_WORD_VALUE, payload: target})
+        dispatch({ type: actions.CHANGE_WORD_VALUE, payload: target })
     }
-    
+
     const providerValue = {
         ...state,
         changeActiveLetter,
@@ -68,7 +75,7 @@ const AppProvider = ({children}) => {
         changeWordValue,
         loading,
         setLoading,
-        fetchApi
+        fetchApi,
     }
 
     return (
@@ -82,4 +89,4 @@ const useGlobalContext = () => {
     return useContext(AppContext)
 }
 
-export {AppProvider, useGlobalContext, actions}
+export { AppProvider, useGlobalContext, actions }

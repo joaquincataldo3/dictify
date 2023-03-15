@@ -37,8 +37,8 @@ function Header() {
         <div className='header-second-column'>
           <div className='letter-type-container'>
             <div className='active-letter-container' onClick={handleToggleLetterListMenu}>
-              <p className={`${modeActive === 'dark' && 'word-dark'}`}>{activeLetter}</p>
-              <i className={`bx bx-chevron-down ${modeActive && 'word-dark'}`}></i>
+              <p className={`${modeActive === 'dark' ? 'word-dark' : 'word-light'}`}>{activeLetter}</p>
+              <i className={`bx bx-chevron-down ${modeActive === 'dark' ? 'word-dark' : 'word-light'}`}></i>
             </div>
             <div className='letter-list-container' ref={letterList}>
               <ul className='letter-list'>
@@ -46,7 +46,7 @@ function Header() {
                   letters.map((letter, i) => {
                     if (letter !== activeLetter) {
                       const letterId = letter
-                      return <p className={`${modeActive && 'word-dark'}`} onClick={() => changeActiveLetter(letterId, letterList)} id={letterId} key={i}>{letter}</p>
+                      return <p className={`${modeActive === 'dark' ? 'word-dark' : 'word-light'}`} onClick={() => changeActiveLetter(letterId, letterList)} id={letterId} key={i}>{letter}</p>
                     }
 
                   })

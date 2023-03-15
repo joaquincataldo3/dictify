@@ -1,0 +1,13 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.error-container * {
+    margin: 0.300rem 0;
+}

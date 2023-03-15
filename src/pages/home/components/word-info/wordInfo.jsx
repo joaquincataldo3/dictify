@@ -23,7 +23,7 @@ function wordInfo() {
                                 <div className="word-info-container" key={i}>
                                     <div className="info-box">
                                         <div className="info-title">
-                                            <h3 className={`${modeActive === 'dark' && 'word-dark'}`}>{partOfSpeech}</h3>
+                                            <h3 className={`${modeActive === 'dark' ? 'word-dark' : 'word-light'}`}>{partOfSpeech}</h3>
                                             <div className="line"></div>
                                         </div>
                                         <div className="info-description">
@@ -33,7 +33,7 @@ function wordInfo() {
                                                     meaning.definitions.map((item, i) => {
                                                         const { definition } = item
                                                         return (
-                                                            <li key={i} className={`definition ${modeActive === 'dark' && 'word-dark'}`}>{definition}</li>
+                                                            <li key={i} className={`definition ${modeActive === 'dark' ? 'word-dark' : 'word-light'}`}>{definition}</li>
                                                         )
                                                     })}
                                             </ul>

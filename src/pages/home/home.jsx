@@ -4,12 +4,13 @@ import Form from "./components/form/form"
 import Word from './components/word/word'
 import WordInfo from "./components/word-info/wordInfo"
 import { useGlobalContext } from "../../hooks/context"
+import WordError from "./components/word-error/wordError"
 import './home.css'
 
 function Home() {
 
 
-  const {loading} = useGlobalContext()
+  const { loading, fetchError } = useGlobalContext()
   const wordWrapper = useRef(null)
 
   return (
@@ -20,6 +21,10 @@ function Home() {
       <main>
 
         <Form />
+
+        {
+          fetchError && <WordError />
+        }
 
         <div className={`word-wrapper ${!loading && 'word-wrapper-active'}`} ref={wordWrapper}>
           <Word />
