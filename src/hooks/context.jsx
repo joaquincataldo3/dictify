@@ -17,7 +17,8 @@ const initialState = {
     word: '',
     data: [],
     fetchError: false,
-    wordError: ''
+    wordError: '',
+    storageValues: []
 }
 
 const actions = {
@@ -34,6 +35,7 @@ const AppProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)
     const [loading, setLoading] = useState(false)
+    const [wordCount, setWordCount] = useState(0)
 
     useEffect(() => {
         fetchApi(initialState.firstWord)
@@ -44,7 +46,12 @@ const AppProvider = ({ children }) => {
         try {
             const response = await axios(`${apiUrl}/${word}`)
             const data = response.data
-            dispatch({ type: actions.FETCH_WORD_SUCCESS, payload: data })
+            if(wordCount === 4) {
+                setWordCount(1)        
+            } else {
+                setWordCount(wordCount + 1)
+            }
+            dispatch({ type: actions.FETCH_WORD_SUCCESS, payload: {data, word, wordCount} })
             setLoading(false)
         } catch (error) {
             console.log(error)
@@ -75,7 +82,7 @@ const AppProvider = ({ children }) => {
         changeWordValue,
         loading,
         setLoading,
-        fetchApi,
+        fetchApi
     }
 
     return (

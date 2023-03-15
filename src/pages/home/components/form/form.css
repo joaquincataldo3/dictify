@@ -46,3 +46,22 @@ input:focus-visible {
     font-size: 1.2rem;
 }
 
+.latest-words-list-container {
+    width: 90%;
+    max-width: 830px;
+    margin: 1.5rem auto;
+    text-align: center;
+}
+
+.latest-words-list {
+    display: flex;
+    justify-content: center;
+    
+    margin: 0.500rem auto;
+    font-style: italic;
+}
+
+.latest-words-list-container li {
+    width: 50%;
+}
+

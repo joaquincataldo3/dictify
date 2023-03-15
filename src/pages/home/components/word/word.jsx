@@ -28,6 +28,7 @@ function Word() {
       {
         data.length > 0 &&
         <div className="word-content-container">
+
           <div className="word-container">
 
             {data.map((data, i) => {
