@@ -1,4 +1,5 @@
 import { useContext, createContext, useState, useReducer, useEffect } from "react";
+import actions from "../utils/actions";
 import reducer from '../hooks/reducer'
 import axios from 'axios'
 
@@ -21,14 +22,6 @@ const initialState = {
     storageValues: []
 }
 
-const actions = {
-    FETCH_WORD_SUCCESS: 'FETCH_WORD_SUCCESS',
-    CHANGE_ACTIVE_LETTER: 'CHANGE_ACTIVE_LETTER',
-    CHANGE_ACTIVE_MODE: 'CHANGE_ACTIVE_MODE',
-    CHANGE_WORD_VALUE: 'CHANGE_WORD_VALUE',
-    FETCH_WORD_ERROR: 'FETCH_WORD_ERROR',
-    NO_ACTION_MATCH: 'NO_ACTION_MATCH'
-}
 
 const apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en'
 

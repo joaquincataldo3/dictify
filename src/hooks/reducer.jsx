@@ -1,4 +1,4 @@
-import { actions } from "./context"
+import actions from "../utils/actions";
 
 const reducer = (state, action) => {
 
