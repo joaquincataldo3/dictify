@@ -1,5 +1,5 @@
 
-import './LoadingSpinner.css'
+import './loadingSpinner.css'
 
 function LoadingSpinner() {
 
