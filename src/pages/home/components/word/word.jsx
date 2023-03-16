@@ -33,7 +33,7 @@ function Word() {
 
             {data.map((data, i) => {
               const { word } = data
-              return <h2 key={i} className={`word ${modeActive === 'dark' && 'word-dark'}`}>{word}</h2>
+              return <h2 key={i} className='word'>{word}</h2>
             })}
 
             {data.map((data, i) => {

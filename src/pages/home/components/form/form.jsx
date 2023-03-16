@@ -37,9 +37,9 @@ function Form() {
             </form>
 
 
-            <div className="latest-words-list-container">
-                <h4>Recent searches</h4>
-                <ul type='none' className="latest-words-list">
+            <div className="recent-words-list-container">
+                <h4 className={`${modeActive === 'dark' ? 'word-dark' : 'word-light'}`}>Recent searches</h4>
+                <ul type='none' className={`recent-words-list ${modeActive === 'dark' ? 'word-dark-contrast' : 'word-light'}`} >
                     {
                         storageValues.length > 0 &&
                         storageValues.map(item => {

@@ -10,7 +10,7 @@ import './home.css'
 function Home() {
 
 
-  const { loading, fetchError } = useGlobalContext()
+  const { loading, fetchError, activeLetter } = useGlobalContext()
   const wordWrapper = useRef(null)
 
   return (
@@ -18,19 +18,24 @@ function Home() {
 
       <Header />
 
-      <main>
+      <main className={`${activeLetter === 'Sans Serif' && 'sans-serif-active'}`}>
 
-        <Form />
+        <div className="main-content-container">
+          <Form />
 
-        {
-          fetchError && <WordError />
-        }
+          {
+            fetchError && <WordError />
+          }
 
-        <div className={`word-wrapper ${!loading && 'word-wrapper-active'}`} ref={wordWrapper}>
-          <Word />
+          <div className={`word-wrapper ${!loading && 'word-wrapper-active'}`} ref={wordWrapper}>
+            <Word />
 
-          <WordInfo />
+            <WordInfo />
+
+          </div>
         </div>
+
+
 
 
       </main>

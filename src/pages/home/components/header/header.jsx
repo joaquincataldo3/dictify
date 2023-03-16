@@ -29,7 +29,7 @@ function Header() {
 
 
   return (
-    <header className='header'>
+    <header className={`header ${activeLetter === 'Sans Serif' && 'sans-serif-active'}`}>
       <div className='header-content-container'>
         <div className='logo-container'>
           <img src={modeActive === 'light' ? blackLogo : whiteLogo} alt='jc_logo' />
@@ -46,7 +46,7 @@ function Header() {
                   letters.map((letter, i) => {
                     if (letter !== activeLetter) {
                       const letterId = letter
-                      return <p className={`${modeActive === 'dark' ? 'word-dark' : 'word-light'}`} onClick={() => changeActiveLetter(letterId, letterList)} id={letterId} key={i}>{letter}</p>
+                      return <p className={`letter-option ${modeActive === 'dark' ? 'word-dark' : 'word-light'}`} onClick={() => changeActiveLetter(letterId, letterList)} id={letterId} key={i}>{letter}</p>
                     }
 
                   })

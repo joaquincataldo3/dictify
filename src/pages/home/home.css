@@ -1,10 +1,49 @@
+main {
+    padding-bottom: 2rem;
+}
+
+.body-dark {
+    background-color: #020012;
+    transition: background-color 150ms ease-in-out;
+}
+
+.body-light {
+    background-color: #FEFAE0;
+    transition: background-color 150ms ease-in-out;
+}
+
+
+
+
+.main-content-container {
+    overflow-x: hidden;
+    max-width: 650px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
 .word-wrapper {
     transform: translateX(-100%);
     transition: transform 350ms;
     margin: 0 auto;
-    max-width: 830px;
+    
 }
 
 .word-wrapper-active {
     transform: translateX(0%);
+}
+
+
+.sans-serif-active {
+    font-family: 'Lato', sans-serif;
+}
+
+@media (min-width: 768px) {
+    .main-content-container {
+        border: 1px solid rgb(202, 201, 201);
+        border-top: 0;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+       
+    }
 }

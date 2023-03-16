@@ -36,9 +36,11 @@ const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [loading, setLoading] = useState(false)
     const [wordCount, setWordCount] = useState(0)
+    const body = document.body
 
     useEffect(() => {
         fetchApi(initialState.firstWord)
+        body.classList.add('body-light')
     }, [])
 
     const fetchApi = async (word) => {
@@ -66,8 +68,8 @@ const AppProvider = ({ children }) => {
     }
 
     const changeActiveMode = (modeActive) => {
-        const body = document.body
         body.classList.toggle('body-dark')
+        body.classList.toggle('body-light')
         dispatch({ type: actions.CHANGE_ACTIVE_MODE, payload: modeActive })
     }
 

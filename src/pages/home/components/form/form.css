@@ -3,7 +3,8 @@ form {
     justify-content: center;
     position: relative;
     max-width: 830px;
-    margin: 0 auto;
+    margin: 2rem auto;
+  
 }
 
 .input-magnifying-container {
@@ -13,6 +14,7 @@ form {
     align-items: center;
     cursor: pointer;
     border-radius: 10px;
+    background-color: white;
 }
 
 
@@ -46,22 +48,28 @@ input:focus-visible {
     font-size: 1.2rem;
 }
 
-.latest-words-list-container {
+.recent-words-list-container {
     width: 90%;
     max-width: 830px;
-    margin: 1.5rem auto;
+    margin: 2.5rem auto;
     text-align: center;
 }
 
-.latest-words-list {
+.recent-words-list {
     display: flex;
     justify-content: center;
-    
     margin: 0.500rem auto;
     font-style: italic;
 }
 
-.latest-words-list-container li {
+.recent-words-list-container li {
     width: 50%;
+}
+
+.storage-value-item {
+    padding: 10px 5px;
+    background-color: #AA77FF;
+    margin: 0 0.500rem;
+    border-radius: 10px;
 }
 

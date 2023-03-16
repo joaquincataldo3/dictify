@@ -3,11 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 75%;
+    width: 90%;
     margin: 2rem auto;
-
-
-
+    background-color: #97DEFF;
+    padding: 1rem 2rem;
+    border-radius: 10px;
 }
 
 .word {
