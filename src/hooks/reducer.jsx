@@ -38,6 +38,11 @@ const reducer = (state, action) => {
             const wordValue = action.payload
 
             return { ...state, word: wordValue }
+
+        default: 
+            console.log(actions.NO_ACTION_MATCH)
+            return {...state}
+
     }
 
 
